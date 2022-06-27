@@ -13,7 +13,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get("/api/workouts", workoutRoutes);
+app.use("/api/workouts", workoutRoutes);
 
 //CONNECT TO DB
 const PORT = process.env.PORT || 8080;
