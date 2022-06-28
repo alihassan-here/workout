@@ -1,10 +1,13 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
+
 
 const WorkoutForm = () => {
     const [title, setTitle] = useState("");
     const [load, setLoad] = useState("");
     const [reps, setReps] = useState("");
     const [error, setError] = useState(null);
+    const { workouts, dispatch } = useWorkoutsContext();
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -25,8 +28,8 @@ const WorkoutForm = () => {
             setTitle("");
             setLoad("");
             setReps("");
-
             setError(null);
+            dispatch({ type: "CREATE_WORKOUT", payload: json })
         }
     }
 
